@@ -1,0 +1,57 @@
+# Виртуальное окружение
+.venv/
+venv/
+env/
+test_env/
+
+# Переменные окружения (СЕКРЕТЫ!)
+.env
+.env.local
+.env.*
+
+# База данных
+*.db
+*.sqlite
+*.sqlite3
+conference.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Логи
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Временные файлы
+*.tmp
+*.bak
+*.swp
+*~
+
+# Скрипты для тестов и обновлений (не нужны на сервере)
+test_*.py
+update_*.py
+set_admin.py
+get_id.py
+
+# Диагностика
+diagnostic_*.py
