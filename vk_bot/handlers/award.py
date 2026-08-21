@@ -14,7 +14,7 @@ from vk_bot.utils.notifications import notify_score_change
 
 
 def register_award_handlers(bot: Bot):
-    """Регистрирует хендлеры для начисления жетонов служителями."""
+    """Регистрирует хендлеры для начисления огоньков служителями."""
 
     @bot.on.message(payload_contains={"action": "award_tokens"})
     async def start_award(msg: Message):
@@ -30,7 +30,7 @@ def register_award_handlers(bot: Bot):
             "data": {},
             "type": 'award'
         }
-        await msg.answer("💰 Начисление жетонов\n\nВведите никнейм участника:")
+        await msg.answer("💰 Начисление огоньков\n\nВведите никнейм участника:")
 
     @bot.on.message(InAwardingRule())
     async def award_fsm(msg: Message):
@@ -63,9 +63,9 @@ def register_award_handlers(bot: Bot):
             await msg.answer(
                 f"✅ Участник найден:\n"
                 f"👤 ФИО: {target['full_name']}\n"
-                f"💰 Текущий баланс: {target['score']} жетонов\n\n"
+                f"💰 Текущий баланс: {target['score']} огоньков\n\n"
                 f"📜 Последние 3 операции:\n{tx_history}\n\n"
-                f"Введите количество жетонов для начисления/списания (число):"
+                f"Введите количество огоньков для начисления/списания (число):"
             )
             return
 
@@ -81,7 +81,7 @@ def register_award_handlers(bot: Bot):
                 state["step"] = "awaiting_reason"
                 await msg.answer("Введите причину начисления/списания (текст):")
             except ValueError:
-                await msg.answer("⚠️ Это не число. Введите количество жетонов цифрами:")
+                await msg.answer("⚠️ Это не число. Введите количество огоньков цифрами:")
             return
 
         # --- ШАГ 3: Ввод причины и финал ---
@@ -115,13 +115,13 @@ def register_award_handlers(bot: Bot):
 
                 await msg.answer(
                     f"✅ Успешно!\n\n"
-                    f"{target['role']} {target['nickname']} ({target['full_name']}) начислено {amount} жетонов от {staff_user['role']} {staff_user['nickname']} ({staff_user['full_name']}).\n"
+                    f"{target['role']} {target['nickname']} ({target['full_name']}) начислено {amount} огоньков от {staff_user['role']} {staff_user['nickname']} ({staff_user['full_name']}).\n"
                     f"Причина: {reason}\n"
                     f"Новый баланс участника: {new_balance}",
                     keyboard=get_main_menu_keyboard(staff_user['role'])
                 )
                 logger.info(
-                    f"Служитель {staff_user['nickname']} начислил {amount} жетонов участнику {target['nickname']}")
+                    f"Служитель {staff_user['nickname']} начислил {amount} огоньков участнику {target['nickname']}")
 
                 # Уведомляем участника в личку (если у него есть vk_id)
                 if target['vk_id']:
@@ -129,7 +129,7 @@ def register_award_handlers(bot: Bot):
                         await bot.api.messages.send(
                             user_id=target['vk_id'],
                             message=(
-                                f"🎉 Вам начислено {amount} жетонов!\n\n"
+                                f"🎉 Вам начислено {amount} огоньков!\n\n"
                                 f"Причина: {reason}\n"
                                 f"Начислил: {staff_user['full_name']}"
                             ),

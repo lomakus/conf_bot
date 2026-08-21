@@ -24,7 +24,7 @@ def get_main_menu_keyboard(role: str = 'participant') -> str:
     # Кнопка только для служителей и админов
     if role in ('staff', 'admin'):
         kb.row()
-        kb.add(Text("💰 Начислить/списать жетоны", payload={"action": "award_tokens"}), color=KeyboardButtonColor.PRIMARY)
+        kb.add(Text("💰 Начислить/списать огоньки", payload={"action": "award_tokens"}), color=KeyboardButtonColor.PRIMARY)
 
     # Кнопка только для админов
     if role == 'admin':
@@ -44,8 +44,8 @@ def get_faq_keyboard() -> str:
     """Клавиатура с вопросами FAQ."""
     kb = Keyboard(one_time=True)
 
-    kb.add(Text("💰 Как заработать жетоны?", payload={"action": "faq_earn"}), color=KeyboardButtonColor.PRIMARY)
-    kb.add(Text("🎁 На что тратить жетоны?", payload={"action": "faq_spend"}), color=KeyboardButtonColor.PRIMARY)
+    kb.add(Text("💰 Как заработать огоньки?", payload={"action": "faq_earn"}), color=KeyboardButtonColor.PRIMARY)
+    kb.add(Text("🎁 На что тратить огоньки?", payload={"action": "faq_spend"}), color=KeyboardButtonColor.PRIMARY)
     kb.row()
     kb.add(Text("🔙 Назад в меню", payload={"action": "back_to_menu"}), color=KeyboardButtonColor.SECONDARY)
 

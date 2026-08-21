@@ -62,7 +62,7 @@ def register_handlers(bot: Bot):
             await msg.answer("📊 Пока нет зарегистрированных пользователей.")
             return
 
-        message = "🏆 ТОП 20 ПО ЖЕТОНАМ\n\n"
+        message = "🏆 ТОП 20 ПО ОГОНЬКАМ\n\n"
 
         for i, u in enumerate(top_users, 1):
             medal = ""
@@ -75,7 +75,7 @@ def register_handlers(bot: Bot):
 
             message += f"{medal}{i}. {u['nickname']}\n"
             message += f"   👤 {u['full_name']}\n"
-            message += f"   💰 {u['score']} жетонов\n"
+            message += f"   💰 {u['score']} огоньков\n"
             message += f"   🎭 {u['role']}\n\n"
 
         await msg.answer(message, keyboard=get_main_menu_keyboard(user['role']))
@@ -105,7 +105,7 @@ def register_handlers(bot: Bot):
 
             message += f"{emoji} #{tx['id']}\n"
             message += f"   👤 @{tx['user_nickname']} ({tx['user_name']})\n"
-            message += f"   💰 {sign}{tx['amount']} жетонов\n"
+            message += f"   💰 {sign}{tx['amount']} огоньков\n"
 
             if tx['description']:
                 message += f"   📝 {tx['description']}\n"

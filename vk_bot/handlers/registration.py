@@ -137,7 +137,7 @@ def register_handlers(bot: Bot):
                     f"✅ Регистрация завершена!\n\n"
                     f"Добро пожаловать, {state['data']['full_name']}!\n"
                     f"Твой никнейм: @{state['data']['nickname']}\n"
-                    f"Твой текущий баланс: 0 баллов.",
+                    f"Твой текущий баланс: 0 огоньков.",
                     keyboard=get_main_menu_keyboard()
                 )
             else:

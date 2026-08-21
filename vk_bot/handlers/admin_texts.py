@@ -200,7 +200,7 @@ def register_handlers(bot: Bot):
         if process_type == 'registration':
             await msg.answer("❌ Регистрация отменена.", keyboard=get_main_menu_keyboard(role))
         elif process_type == 'award':
-            await msg.answer("❌ Начисление жетонов отменено.", keyboard=get_main_menu_keyboard(role))
+            await msg.answer("❌ Начисление огоньков отменено.", keyboard=get_main_menu_keyboard(role))
         elif process_type == 'text_editing':
             await msg.answer("❌ Редактирование текста отменено.", keyboard=get_main_menu_keyboard(role))
         elif process_type == 'broadcast':

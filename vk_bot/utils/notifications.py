@@ -3,7 +3,7 @@
 """
 from vkbottle import Bot
 from vkbottle.modules import logger
-from config import VK_NOTIFICATIONS_CHAT_ID
+from config import VK_PULS_CHAT_ID
 from database.queries import get_users_stats
 
 
@@ -12,17 +12,17 @@ async def send_notification(bot: Bot, message: str) -> None:
     Отправляет уведомление в чат уведомлений.
     Не прерывает выполнение, если чат недоступен.
     """
-    if not VK_NOTIFICATIONS_CHAT_ID:
+    if not VK_PULS_CHAT_ID:
         logger.warning("⚠️ VK_NOTIFICATIONS_CHAT_ID не настроен, уведомление не отправлено")
         return
 
     try:
         await bot.api.messages.send(
-            peer_id=int(VK_NOTIFICATIONS_CHAT_ID),
+            peer_id=int(VK_PULS_CHAT_ID),
             message=message,
             random_id=0,
         )
-        logger.info(f"✅ Уведомление отправлено в чат {VK_NOTIFICATIONS_CHAT_ID}")
+        logger.info(f"✅ Уведомление отправлено в чат {VK_PULS_CHAT_ID}")
     except Exception as e:
         # Логируем, но не прерываем основную логику
         logger.error(f"❌ Ошибка отправки уведомления: {e}")
@@ -74,10 +74,10 @@ async def notify_score_change(
     message = (
         f"{emoji} {action} #{transaction_id}\n\n"
         f"👤 Участник: {participant['full_name']} ({participant['nickname']})\n"
-        f"💰 Изменение: {sign}{amount} жетонов\n"
+        f"💰 Изменение: {sign}{amount} огоньков\n"
         f"📝 Причина: {reason}\n"
         f"🛡️ Кем выполнено: {staff_info}\n\n"
-        f"📊 Текущий баланс: {participant['score']} жетонов"
+        f"📊 Текущий баланс: {participant['score']} огоньков"
     )
     await send_notification(bot, message)
 
