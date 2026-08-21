@@ -52,6 +52,10 @@ test_*.py
 update_*.py
 set_admin.py
 get_id.py
+test1.py
+test2.py
+test3.py
+test5.py
 
 # Диагностика
 diagnostic_*.py
