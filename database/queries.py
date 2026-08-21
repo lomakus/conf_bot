@@ -497,7 +497,7 @@ async def get_top_users(limit: int = 10) -> list[dict]:
     try:
         cursor = await conn.execute(
             """
-            SELECT id, full_name, nickname, score, city
+            SELECT id, full_name, nickname, score, city, role
             FROM users
             WHERE score > 0
             ORDER BY score DESC
