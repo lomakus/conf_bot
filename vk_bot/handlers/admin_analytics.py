@@ -73,7 +73,7 @@ def register_handlers(bot: Bot):
             elif i == 3:
                 medal = "🥉 "
 
-            message += f"{medal}{i}. @{u['nickname']}\n"
+            message += f"{medal}{i}. {u['nickname']}\n"
             message += f"   👤 {u['full_name']}\n"
             message += f"   💰 {u['score']} жетонов\n"
             message += f"   🎭 {u['role']}\n\n"

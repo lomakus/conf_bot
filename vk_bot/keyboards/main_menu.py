@@ -4,7 +4,7 @@ def get_register_keyboard() -> str:
     """Клавиатура с кнопкой регистрации."""
     kb = Keyboard(one_time=True)
     kb.add(Text("📝 Зарегистрироваться", payload={"action": "register"}), color=KeyboardButtonColor.POSITIVE)
-    kb.add(Text("📝 Войти", payload={"action": "login"}), color=KeyboardButtonColor.PRIMARY)
+    # kb.add(Text("📝 Войти", payload={"action": "login"}), color=KeyboardButtonColor.PRIMARY)
 
     return kb
 
