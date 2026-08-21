@@ -416,21 +416,23 @@ async def update_score(
 
         # Создаём транзакцию
         tx_type = "credit" if delta > 0 else "debit"
-        trans_id = await add_transaction(user_id, abs(delta), tx_type, description or f"Изменение score: {delta:+d}", created_by)
-        # trans_id = await conn.execute(
-        #     """
-        #     INSERT INTO transactions (user_id, amount, type, description, created_by)
-        #     VALUES (?, ?, ?, ?, ?)
-        #     """,
-        #     (user_id, abs(delta), tx_type, description or f"Изменение score: {delta:+d}", created_by),
-        # )
+        # trans_id = await add_transaction(user_id, abs(delta), tx_type, description or f"Изменение score: {delta:+d}", created_by)
+        cursor = await conn.execute(
+            """
+            INSERT INTO transactions (user_id, amount, type, description, created_by)
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            (user_id, abs(delta), tx_type, description or f"Изменение score: {delta:+d}", created_by),
+        )
 
         await conn.commit()
+
+        transaction_id = cursor.lastrowid
         logger.info(
             "Score обновлён: user_id=%d, %d -> %d, created_by=%s",
             user_id, current_score, new_score, created_by or "система"
         )
-        return trans_id
+        return transaction_id
     except aiosqlite.IntegrityError as e:
         logger.warning("Ошибка обновления score: %s", e)
         return False
