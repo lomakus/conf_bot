@@ -59,7 +59,7 @@ async def notify_score_change(
     staff: dict | None = None,
 ) -> None:
     """
-    Уведомление о начислении или списании баллов.
+    Уведомление о начислении или списании огоньков.
     """
     emoji = "💰" if tx_type == "credit" else "💸"
     sign = "+" if tx_type == "credit" else "-"

@@ -7,8 +7,6 @@ from config import VK_REVIEW_CHAT_ID
 
 def register_phot_handlers(bot: Bot):
     """Регистрирует хендлер простой отправки фото в чат проверки."""
-
-    @bot.on.message(text=['Фото', 'фото'])
     @bot.on.message(payload_contains={"action": "submit_photo"})
     async def submit_photo_prompt(msg: Message):
         """Просит пользователя отправить фото."""

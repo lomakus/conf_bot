@@ -13,7 +13,7 @@ def get_main_menu_keyboard(role: str = 'participant') -> str:
     kb = Keyboard(one_time=True)
 
     kb.add(Text("👤 Мой профиль", payload={"action": "profile"}), color=KeyboardButtonColor.PRIMARY)
-    kb.add(Text("📜 История баллов", payload={"action": "history"}), color=KeyboardButtonColor.SECONDARY)
+    kb.add(Text("📜 История огоньков", payload={"action": "history"}), color=KeyboardButtonColor.SECONDARY)
     # kb.add(Text("🏆 Рейтинг"), color=KeyboardButtonColor.PRIMARY)
     kb.row()
     kb.add(Text("📸 Отправить фото", payload={"action": "submit_photo"}), color=KeyboardButtonColor.POSITIVE)

@@ -34,3 +34,16 @@ class InBroadcastingRule(ABCRule):
     async def check(self, message: Message) -> bool:
         state = user_states.get(message.from_id)
         return state is not None and state.get('type') == 'broadcast'
+
+
+class NotInFSMRule(ABCRule):
+    """Возвращает True, если пользователь не находится ни в одном активном процессе FSM."""
+
+    async def check(self, message: Message) -> bool:
+        state = user_states.get(message.from_id)
+
+        # Если состояния нет вообще ИЛИ в состоянии нет ключа 'type' (оно пустое)
+        if state is None or not state.get('type'):
+            return True
+
+        return False

@@ -15,7 +15,6 @@ DEFAULT_SHOP_TEXT = (
 def register_handlers(bot: Bot):
     """Регистрирует хендлеры магазина."""
 
-    @bot.on.message(text=['Shop', 'shop', 'Магазин', 'магазин'])
     @bot.on.message(payload_contains={"action": "shop"})
     async def shop_handler(msg: Message):
         """Показывает список товаров."""

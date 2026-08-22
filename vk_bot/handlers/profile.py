@@ -40,7 +40,7 @@ def register_profile_handlers(bot: Bot):
             f"🎂 Возраст: {user['age']} лет\n"
             f"🏙️ Город: {user['city'] or 'не указан'}\n"
             f"🎭 Роль: {role_display}\n\n"
-            f"💰 Баланс: {score} баллов"
+            f"💰 Баланс: {score} огоньков"
         )
 
         await msg.answer(profile_text, keyboard=get_main_menu_keyboard(user['role']))
@@ -58,15 +58,15 @@ def register_profile_handlers(bot: Bot):
 
         if not transactions:
             await msg.answer(
-                "📜 История баллов\n\n"
+                "📜 История огоньков\n\n"
                 "У тебя пока нет транзакций.\n"
-                "Баллы начисляются за выполнение заданий!",
+                "огоньки начисляются за выполнение заданий!",
                 keyboard=get_main_menu_keyboard(user['role'])
             )
             return
 
         # Формируем текст истории
-        history_text = "📜 История баллов (последние 20 операций)\n\n"
+        history_text = "📜 История огоньков (последние 20 операций)\n\n"
 
         for tx in transactions:
             # Определяем знак и эмодзи
@@ -87,7 +87,7 @@ def register_profile_handlers(bot: Bot):
             date = tx['created_at'].split(' ')[0] if tx['created_at'] else 'неизвестно'
 
             history_text += (
-                f"{emoji} {sign}{tx['amount']} баллов\n"
+                f"{emoji} {sign}{tx['amount']} огоньков\n"
                 f"   📝 {tx['description'] or 'без описания'}\n"
                 f"   👤 {by_info}\n"
                 f"   📅 {date}\n\n"
